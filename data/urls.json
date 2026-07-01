@@ -1,0 +1,127 @@
+[
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.qualys.com/apps/vulnerability-management-detection-response/",
+    "description": "Official Qualys product page for Vulnerability Management, Detection and Response, covering product overview, key capabilities, and business outcomes of using VMDR."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://qualys.sumtotal.host/core/pillarRedirect?relyingParty=LM&url=app%2Fmanagement%2FLMS_ActDetails.aspx%3FActivityId%3D1071%26UserMode%3D0",
+    "description": "Qualys LMS self-paced course providing in-depth coverage of all Qualys sensor types including Local Scanner Appliances, External Scanners, and Cloud Agents."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://docs.qualys.com/en/vm/latest/#t=scans%2Fvault_support_matrix.htm",
+    "description": "Qualys documentation listing all third-party password vaults currently supported for integration with Qualys authentication records."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://docs.qualys.com/en/ca/portal/latest/#t=agents%2Fagents.htm",
+    "description": "Official Qualys documentation for managing Cloud Agents, covering the Agents tab, configuration profiles, module activation, on-demand scans, and agent management actions."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://blog.qualys.com/product-tech/2021/01/21/unified-vulnerability-view-of-unauthenticated-and-agent-scans",
+    "description": "Qualys Community blog post explaining Unified Vulnerability View and how unauthenticated scans and Cloud Agent scans are merged into a single asset record using the Agentless Tracking Identifier and Agent Correlation Identifier."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://vimeo.com/828474370",
+    "description": "Lab simulation walking through the process of configuring Asset Tracking and Data Merging settings in VMDR to enable Unified Vulnerability View."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://vimeo.com/823380805/25c435dbea",
+    "description": "Video demonstration showing how asset merging works in practice, combining scan and Cloud Agent data into a single unified asset record."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://vimeo.com/1043482087",
+    "description": "Video covering troubleshooting steps for common asset merging issues in VMDR, including cases where detections fail to consolidate into a single asset record."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://docs.qualys.com/en/vm/latest/#t=software_composition_analysis%2Fabout_sca.htm",
+    "description": "Qualys documentation on Software Composition Analysis (SwCA) capabilities in the Cloud Agent, covering detection and management of open-source software supply chain vulnerabilities."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://docs.qualys.com/en/vm/latest/authentication/windows/windows_auth_qids.htm",
+    "description": "Qualys documentation listing key QIDs related to Windows authentication status in scan results, including successful and failed authentication indicators for building dashboard widgets and monitoring scan performance."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://blog.qualys.com/product-tech/2024/08/09/subscription-health-dashboard-update-optimize-deployments-and-identify-issues",
+    "description": "Qualys blog article explaining the Subscription Health dashboard and how to use it to optimize deployments, track scan and authentication failures, identify stale hosts, and improve data cleanliness."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://hbr.org/2023/07/the-value-of-digital-transformation",
+    "description": "Harvard Business Review article cited in the modern security strategy context, noting that 89% of large companies globally have a digital and AI transformation underway."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.sec.gov/news/press-release/2023-139",
+    "description": "SEC press release announcing rules requiring public companies to disclose material cybersecurity incidents and their cybersecurity risk management practices."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.digital-operational-resilience-act.com/",
+    "description": "Reference site for the Digital Operational Resilience Act (DORA), the EU regulation demanding cybersecurity risk management transparency from financial entities."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.nacdonline.org/all-governance/governance-resources/governance-research/director-handbooks/nacd-directors-handbook-on-cyber-risk-oversight/",
+    "description": "NACD Directors Handbook on Cyber Risk Oversight, covering how corporate leaders now own cyber risk as a strategic enterprise risk."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://blog.qualys.com/vulnerabilities-threat-research/2023/12/19/2023-threat-landscape-year-in-review-part-one",
+    "description": "Qualys blog article reviewing the 2023 threat landscape, explaining that less than 1% of vulnerabilities contributed to the highest risk and were routinely exploited in the wild."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://blog.qualys.com/vulnerabilities-threat-research/2022/10/10/in-depth-look-into-data-driven-science-behind-qualys-trurisk",
+    "description": "Qualys blog deep dive into how TruRisk is calculated, including the role of CVSS, threat intelligence, exploit code maturity, and business context in producing a risk score."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://success.qualys.com/customersupport/s/",
+    "description": "Qualys Support Portal landing page for documentation, training, community forums, and managing support cases."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://success.qualys.com/support/s/article/000003610",
+    "description": "Article explaining all the ways to interact with Qualys Support, including calling, chatting, and opening cases."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://success.qualys.com/support/s/article/000006839",
+    "description": "Document detailing what information to provide to Qualys Support when opening cases to drive faster resolution."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.qualys.com/documentation/",
+    "description": "Central location for all Qualys product documentation."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://status.qualys.com/",
+    "description": "Qualys Systems Status page showing the operational status, maintenance windows, upgrades, and outages for each Qualys platform."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://www.qualys.com/platform-identification/",
+    "description": "Tool to identify which Qualys platform your organization is using."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://community.qualys.com/vulnerability-detection-pipeline/",
+    "description": "Qualys Community page to browse, filter by detection status, or search by CVE to get visibility into upcoming and new vulnerability detections (QIDs) for all severities."
+  },
+  {
+    "cert_name": "VMDR",
+    "url": "https://success.qualys.com/discussions/s/article/000006767",
+    "description": "Article walking through how to log a feature request for new vulnerability detections in Qualys."
+  }
+]
