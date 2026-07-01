@@ -4,7 +4,6 @@ import argparse
 import re
 import time
 import uuid
-from pathlib import Path
 
 import parse_md
 import scrape_urls

@@ -43,13 +43,6 @@ def parse_file(file_path: Path, cert_name: str) -> list[dict]:
     return blocks
 
 
-def parse_cert(cert_dir: Path) -> list[dict]:
-    blocks = []
-    for md_file in sorted(cert_dir.glob("*.md")):
-        blocks.append((md_file, parse_file(md_file, cert_dir.name)))
-    return blocks
-
-
 def main(cert: str | None = None):
     load_dotenv()
 
@@ -62,7 +55,8 @@ def main(cert: str | None = None):
         if not cert_dir.is_dir():
             print(f"Cert folder not found: {cert_dir}")
             continue
-        for md_file, blocks in parse_cert(cert_dir):
+        for md_file in sorted(cert_dir.glob("*.md")):
+            blocks = parse_file(md_file, cert_dir.name)
             print(f"{cert_dir.name}/{md_file.name}: {len(blocks)} paragraphs")
             all_blocks.extend(blocks)
 
