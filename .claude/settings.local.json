@@ -9,7 +9,21 @@
       "Bash(cat)",
       "Bash(venv/Scripts/python.exe /tmp/_test_agent.py)",
       "Bash(rm -f /tmp/_test_agent.py)",
-      "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_agent.py; echo \"EXIT CODE: $LASTEXITCODE\")"
+      "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_agent.py; echo \"EXIT CODE: $LASTEXITCODE\")",
+      "Bash(venv/Scripts/python.exe -c \"import chainlit; print\\(chainlit.__version__\\)\")",
+      "Bash(venv/Scripts/python.exe -c \"import chainlit; print\\('chainlit imports ok, version:', chainlit.__version__\\)\")",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(cat \"C:\\\\Users\\\\i\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\bundled-skills\\\\2.1.197\\\\4f69dd1a1488920d46f11a5c22edb604\\\\run\\\\examples\\\\playwright.md\" 2>/dev/null || find \"C:\\\\Users\\\\i\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\bundled-skills\" -iname \"playwright.md\" 2>/dev/null)",
+      "Read(//c/Users/i/AppData/Local/Temp/claude/bundled-skills/**)",
+      "Bash(command -v chromium-cli)",
+      "Bash(venv/Scripts/python.exe -c \"import playwright; print\\('playwright available'\\)\")",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:8000 >/dev/null 2>&1; do sleep 1; done')",
+      "Bash(curl -s http://localhost:8000)",
+      "Read(//tmp/**)",
+      "Bash(venv/Scripts/python.exe -c \"import anyio; print\\(anyio.__version__\\)\")",
+      "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_tools.py; echo \"test_tools.py EXIT: $LASTEXITCODE\")",
+      "Bash(curl -s -o /dev/null -w \"qdrant status: %{http_code}\\\\n\" http://localhost:6333/collections --max-time 3)"
     ]
   }
 }

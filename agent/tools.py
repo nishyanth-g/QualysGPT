@@ -17,11 +17,26 @@ load_dotenv()
 MODEL = "claude-sonnet-4-6"
 TAVILY_URL = "https://api.tavily.com/search"
 
-retriever = Retriever()
-client = anthropic.Anthropic()
+_retriever = None
+_client = None
+
+
+def _get_retriever() -> Retriever:
+    global _retriever
+    if _retriever is None:
+        _retriever = Retriever()
+    return _retriever
+
+
+def _get_client() -> anthropic.Anthropic:
+    global _client
+    if _client is None:
+        _client = anthropic.Anthropic()
+    return _client
 
 
 def search_notes(query: str, cert_filter: str | None = None, top_k: int = 5) -> str:
+    retriever = _get_retriever()
     results = retriever.search(query, cert_filter=cert_filter, top_k=top_k)
     if not results:
         return "No relevant content found in your Qualys notes for this query."
@@ -36,7 +51,7 @@ def quiz_me(topic: str, question_type: str = "recall") -> dict:
     )
 
     for _ in range(2):
-        response = client.messages.create(
+        response = _get_client().messages.create(
             model=MODEL,
             max_tokens=1024,
             system=system,
@@ -58,7 +73,7 @@ def suggest_workflow(task_description: str, cert_filter: str | None = None) -> s
         "Flag gaps with [NOTE: limited info]. End with Source: {cert_name}/{h1}"
     )
 
-    response = client.messages.create(
+    response = _get_client().messages.create(
         model=MODEL,
         max_tokens=1024,
         messages=[{"role": "user", "content": f"Context:\n{context}\n\n{instruction}"}],

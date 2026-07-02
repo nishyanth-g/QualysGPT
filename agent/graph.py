@@ -22,7 +22,15 @@ load_dotenv()
 MODEL = "claude-sonnet-4-6"
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "memory.db"
 
-chat_model = ChatAnthropic(model=MODEL, max_tokens=1024)
+_chat_model = None
+_agent_graph = None
+
+
+def _get_chat_model() -> ChatAnthropic:
+    global _chat_model
+    if _chat_model is None:
+        _chat_model = ChatAnthropic(model=MODEL, max_tokens=1024)
+    return _chat_model
 
 
 class AgentState(TypedDict):
@@ -94,7 +102,7 @@ def generate_response(state: AgentState, config: RunnableConfig) -> dict:
         + [{"role": "user", "content": "Context:" + state["context"]}]
     )
 
-    response = chat_model.invoke(messages, config=config)
+    response = _get_chat_model().invoke(messages, config=config)
 
     return {"messages": [{"role": "assistant", "content": response.content}]}
 
@@ -134,5 +142,9 @@ graph.add_edge("run_suggest_workflow", "generate_response")
 graph.add_edge("run_web_search", "generate_response")
 graph.add_edge("generate_response", END)
 
-checkpointer = SqliteSaver(sqlite3.connect(str(DB_PATH), check_same_thread=False))
-agent_graph = graph.compile(checkpointer=checkpointer)
+def get_agent_graph():
+    global _agent_graph
+    if _agent_graph is None:
+        checkpointer = SqliteSaver(sqlite3.connect(str(DB_PATH), check_same_thread=False))
+        _agent_graph = graph.compile(checkpointer=checkpointer)
+    return _agent_graph

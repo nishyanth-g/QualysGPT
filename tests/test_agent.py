@@ -7,7 +7,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, "agent")
 
 from agent import run
-from graph import agent_graph
+from graph import get_agent_graph
 
 SESSION_ID = "test-session-day4"
 CONFIG = {"configurable": {"thread_id": SESSION_ID}}
@@ -15,7 +15,7 @@ exit_code = 0
 
 
 def get_state():
-    return agent_graph.get_state(CONFIG).values
+    return get_agent_graph().get_state(CONFIG).values
 
 
 def check(label: str, condition: bool):

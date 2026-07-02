@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
-from graph import DB_PATH, agent_graph, graph
+from graph import DB_PATH, get_agent_graph, graph
 
 
 def run(user_message: str, session_id: str, cert_filter: str | None = None) -> str:
@@ -20,7 +20,7 @@ def run(user_message: str, session_id: str, cert_filter: str | None = None) -> s
         "tool_called": "",
         "context": "",
     }
-    result = agent_graph.invoke(input_state, config=config)
+    result = get_agent_graph().invoke(input_state, config=config)
     return result["messages"][-1]["content"]
 
 
