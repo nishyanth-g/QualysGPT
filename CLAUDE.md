@@ -64,3 +64,27 @@
 - Do not embed text without the context prefix
 - Do not treat urls.json content as a separate pipeline — it uses same dict format as parse_md.py
 - scrape_urls.py reads from data/urls.json at ROOT not inside cert folders
+
+## Agent Architecture (added Day 4)
+- Framework: LangGraph with SqliteSaver checkpointer
+- State schema: AgentState TypedDict in agent/graph.py
+- State fields: messages (list), tool_called (str), context (str), session_id (str), cert_filter (str|None)
+- Nodes: classify_intent, search_notes, quiz_me, suggest_workflow, web_search, generate_response
+- Fallback edge: search_notes → web_search if all scores < 0.5
+- Memory: SqliteSaver at data/memory.db — thread_id = Chainlit session UUID
+- Entry point: agent/agent.py exposes run() and astream_events()
+- Tools import from: agent/tools.py (search_notes, quiz_me, suggest_workflow, web_search)
+- Retriever import from: retrieval/retriever.py (Retriever class)
+
+
+## Interface Config (added Day 5)
+- Chainlit UI: ui/app.py — localhost:8000 — chainlit run ui\app.py
+- MCP server: mcp_server/server.py — stdio transport — FastMCP
+- Claude Desktop config: %APPDATA%\Claude\claude_desktop_config.json
+- Windows MCP path: use double-backslash or forward-slash — never single backslash
+- Session memory: data/memory.db (SQLite) — do not delete this file during testing
+
+
+## Subagents (added Days 4-6)
+- routing-reviewer: reviews intent classification mistakes — invoke when wrong tool fires
+- eval-runner: runs test scripts and reports results — never modifies code

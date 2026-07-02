@@ -4,7 +4,12 @@
       "Bash(python -c \"import dotenv\")",
       "PowerShell(python --version)",
       "PowerShell(python -c \"import dotenv; print\\('ok'\\)\")",
-      "Bash(curl -s -o /dev/null -w \"qdrant:%{http_code}\" http://localhost:6333/collections --max-time 3)"
+      "Bash(curl -s -o /dev/null -w \"qdrant:%{http_code}\" http://localhost:6333/collections --max-time 3)",
+      "Bash(venv/Scripts/python.exe -c ' *)",
+      "Bash(cat)",
+      "Bash(venv/Scripts/python.exe /tmp/_test_agent.py)",
+      "Bash(rm -f /tmp/_test_agent.py)",
+      "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_agent.py; echo \"EXIT CODE: $LASTEXITCODE\")"
     ]
   }
 }
