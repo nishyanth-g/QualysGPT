@@ -7,7 +7,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, "agent")
 
 from agent import run
-from graph import get_agent_graph
+from graph import get_agent_graph, reformulate_query
 
 SESSION_ID = "test-session-day4"
 CONFIG = {"configurable": {"thread_id": SESSION_ID}}
@@ -69,5 +69,29 @@ check(
     "response references prior context (conversation history carried forward)",
     message_count_after == message_count_before + 2,
 )
+
+print("\n=== 6. Web search synthesis (no deflection) ===")
+response = run("Search the web for the latest CISA KEV additions", session_id=SESSION_ID)
+tool_called = get_state()["tool_called"]
+print(f"tool_called: {tool_called}")
+print(response[:300])
+deflection_phrases = ["i can only help with", "please visit", "check these links", "check the link", "check these sources"]
+check("web_search was called", tool_called == "web_search")
+check("response contains a URL", bool(re.search(r"https?://\S+", response)))
+check("no deflection phrasing", not any(p in response.lower() for p in deflection_phrases))
+
+print("\n=== 7. Query reformulation: standalone passthrough ===")
+standalone_query = reformulate_query([{"role": "user", "content": "What is TruRisk?"}])
+print(f"reformulated: {standalone_query}")
+check("standalone query preserves topic (TruRisk)", "trurisk" in standalone_query.lower())
+
+print("\n=== 8. Query reformulation: follow-up resolves context ===")
+followup_query = reformulate_query([
+    {"role": "user", "content": "What is TruRisk?"},
+    {"role": "assistant", "content": "TruRisk is Qualys's risk-scoring framework. It's built from two main TruRisk factors: 1) the CVSS-based technical severity, and 2) the asset criticality score assigned to the host."},
+    {"role": "user", "content": "tell me more about the second one"},
+])
+print(f"reformulated: {followup_query}")
+check("follow-up reformulation contains 'TruRisk'", "trurisk" in followup_query.lower())
 
 sys.exit(exit_code)

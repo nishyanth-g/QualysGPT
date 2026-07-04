@@ -16,9 +16,13 @@ from qdrant_client.models import Distance, PointStruct, VectorParams
 COLLECTION = "qualys_notes"
 VECTOR_SIZE = 1536
 MAX_TOKENS = 800
+MIN_SUBCHUNK_TOKENS = 40
+MAX_SUBCHUNK_OVERLAP = 0.8
 EMBED_MODEL = "text-embedding-3-small"
 EMBED_BATCH = 20
 UPSERT_BATCH = 100
+
+LABELED_BULLET_RE = re.compile(r"^-\s+([A-Za-z][^—:]{1,60}?)\s+[—-]\s+(.+)$")
 
 
 def last_two_sentences(text: str) -> str:
@@ -33,6 +37,43 @@ def group_blocks(blocks: list[dict]) -> dict:
         groups.setdefault(key, {"source_type": b["source_type"], "texts": []})
         groups[key]["texts"].append(b["text"])
     return groups
+
+
+def build_bullet_subchunks(h1: str, h2: str, full_text: str, enc) -> list[str]:
+    """Additive sub-chunks for labeled bullets (e.g. '- Detection Logic — ...') within
+    an H2 body, so a query about one specific property doesn't have to compete against
+    the whole H2's averaged embedding. Does not replace the parent overview chunk."""
+    bullets = [
+        (m.group(1).strip(), line.strip())
+        for line in full_text.split("\n")
+        if (m := LABELED_BULLET_RE.match(line.strip()))
+    ]
+    if len(bullets) < 2:
+        return []
+
+    all_bullet_tokens = len(enc.encode("\n".join(line for _, line in bullets)))
+
+    prefix_base = f"Module: {h1} | Topic: {h2}"
+    subchunks = []
+    labels, lines = [], []
+
+    def flush():
+        if not lines:
+            return
+        group_tokens = len(enc.encode("\n".join(lines)))
+        if all_bullet_tokens and group_tokens / all_bullet_tokens > MAX_SUBCHUNK_OVERLAP:
+            return  # near-duplicate of the parent overview's bullet content — skip
+        subchunks.append(f"{prefix_base} | Covers: {', '.join(labels)} — " + "\n".join(lines))
+
+    for label, line in bullets:
+        labels.append(label)
+        lines.append(line)
+        if len(enc.encode("\n".join(lines))) >= MIN_SUBCHUNK_TOKENS:
+            flush()
+            labels, lines = [], []
+    flush()
+
+    return subchunks
 
 
 def chunk_group(h1: str, h2: str, full_text: str, enc) -> list[str]:
@@ -73,6 +114,17 @@ def build_chunks(blocks: list[dict], enc) -> list[dict]:
             idx = 0
         full_text = "\n".join(data["texts"])
         for chunk_text in chunk_group(h1, h2, full_text, enc):
+            chunks.append({
+                "cert_name": cert_name,
+                "source_type": data["source_type"],
+                "source_file": source_file,
+                "h1": h1,
+                "h2": h2,
+                "chunk_index": idx,
+                "text": chunk_text,
+            })
+            idx += 1
+        for chunk_text in build_bullet_subchunks(h1, h2, full_text, enc):
             chunks.append({
                 "cert_name": cert_name,
                 "source_type": data["source_type"],
