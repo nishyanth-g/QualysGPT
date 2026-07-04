@@ -9,11 +9,13 @@ from typing import Annotated, TypedDict
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "retrieval"))
 
+import httpx
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.runnables import RunnableConfig
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import END, StateGraph
+from qdrant_client.http.exceptions import ApiException
 from prompts import SYSTEM_PROMPT
 from tools import quiz_me, search_notes, suggest_workflow, web_search
 
@@ -65,7 +67,13 @@ def classify_intent(state: AgentState) -> dict:
 
 def run_search_notes(state: AgentState) -> dict:
     query = state["messages"][-1]["content"]
-    result = search_notes(query, cert_filter=state["cert_filter"])
+    try:
+        result = search_notes(query, cert_filter=state["cert_filter"])
+    except Exception as e:
+        if isinstance(e, (ApiException, httpx.ConnectError, ConnectionRefusedError)):
+            return {"context": "Knowledge base is unavailable — check that Qdrant is running on port 6333."}
+        raise
+
     tool_called = "web_search_fallback" if result.startswith("No relevant") else state["tool_called"]
     return {"context": result, "tool_called": tool_called}
 
@@ -91,11 +99,25 @@ def run_suggest_workflow(state: AgentState) -> dict:
 
 
 def run_web_search(state: AgentState) -> dict:
-    result = web_search(state["messages"][-1]["content"])
+    try:
+        result = web_search(state["messages"][-1]["content"])
+    except Exception:
+        return {"context": "Web search is temporarily unavailable. Your notes are still searchable."}
     return {"context": result}
 
 
 def generate_response(state: AgentState, config: RunnableConfig) -> dict:
+    if state["context"].startswith("Knowledge base is unavailable"):
+        return {
+            "messages": [{
+                "role": "assistant",
+                "content": (
+                    "Knowledge base is unavailable — check that Qdrant is running on port 6333. "
+                    "I only answer from your certification notes, so I can't respond until it's back."
+                ),
+            }]
+        }
+
     messages = (
         [{"role": "system", "content": SYSTEM_PROMPT}]
         + state["messages"]

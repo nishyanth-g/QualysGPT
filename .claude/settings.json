@@ -1,4 +1,15 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"qdrant status: %{http_code}\\\\n\" http://localhost:6333/collections --max-time 3)",
+      "Bash(cat)",
+      "Bash(venv/Scripts/python.exe /tmp/_test_e2e_off.py)",
+      "Bash(rm -f /tmp/_test_e2e_off.py)",
+      "Bash(venv/Scripts/python.exe /tmp/_test_breakdown.py)",
+      "Bash(rm -f /tmp/_test_breakdown.py)",
+      "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_agent.py; echo \"EXIT CODE: $LASTEXITCODE\")"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {

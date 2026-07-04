@@ -20,7 +20,12 @@ def run(user_message: str, session_id: str, cert_filter: str | None = None) -> s
         "tool_called": "",
         "context": "",
     }
-    result = get_agent_graph().invoke(input_state, config=config)
+    try:
+        result = get_agent_graph().invoke(input_state, config=config)
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        return "An error occurred while processing your request. Please try again."
     return result["messages"][-1]["content"]
 
 

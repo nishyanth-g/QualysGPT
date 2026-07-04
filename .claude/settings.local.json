@@ -23,7 +23,8 @@
       "Read(//tmp/**)",
       "Bash(venv/Scripts/python.exe -c \"import anyio; print\\(anyio.__version__\\)\")",
       "PowerShell(.\\\\venv\\\\Scripts\\\\python.exe tests\\\\test_tools.py; echo \"test_tools.py EXIT: $LASTEXITCODE\")",
-      "Bash(curl -s -o /dev/null -w \"qdrant status: %{http_code}\\\\n\" http://localhost:6333/collections --max-time 3)"
+      "Bash(curl -s -o /dev/null -w \"qdrant status: %{http_code}\\\\n\" http://localhost:6333/collections --max-time 3)",
+      "Bash(venv/Scripts/python.exe -c \"import httpx; print\\(httpx.ConnectError\\)\")"
     ]
   }
 }

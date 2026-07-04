@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "agent"))
 import chainlit as cl
 
 from agent import astream_events
+from graph import get_agent_graph
 
 
 @cl.on_chat_start
@@ -32,8 +33,18 @@ async def on_message(message: cl.Message):
     msg = cl.Message(content="", author="QualysGPT")
     await msg.send()
 
-    async for token in astream_events(message.content, session_id, config):
-        await msg.stream_token(token)
+    streamed = False
+    try:
+        async for token in astream_events(message.content, session_id, config):
+            streamed = True
+            await msg.stream_token(token)
+    except Exception:
+        await cl.Message(content="Something went wrong processing that. Check that Qdrant is running and try again.").send()
+        return
+
+    if not streamed:
+        state = get_agent_graph().get_state(config)
+        msg.content = state.values["messages"][-1]["content"]
 
     await msg.update()
 
