@@ -1,0 +1,39 @@
+{
+  "manifest_version": "0.3",
+  "name": "qualysgpt",
+  "display_name": "QualysGPT",
+  "version": "1.0.0",
+  "description": "RAG-powered agentic tools over Qualys certification notes (VMDR, VMF).",
+  "author": {
+    "name": "Nishyanth Gollamudi"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "C:/Users/i/Documents/Projects/QualysGPT/venv/Scripts/python.exe",
+      "args": [
+        "C:/Users/i/Documents/Projects/QualysGPT/mcp_server/server.py"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "qualys_search_notes",
+      "description": "Search Qualys certification notes for answers to security questions."
+    },
+    {
+      "name": "qualys_quiz_me",
+      "description": "Generate a quiz question from Qualys certification notes on a given topic."
+    },
+    {
+      "name": "qualys_suggest_workflow",
+      "description": "Generate a step-by-step Qualys workflow for a security task."
+    },
+    {
+      "name": "qualys_web_search",
+      "description": "Search the web for live Qualys documentation or CVE information."
+    }
+  ],
+  "tools_generated": false
+}

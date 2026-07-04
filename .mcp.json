@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "qualysgpt": {
+      "command": "C:/Users/i/Documents/Projects/QualysGPT/venv/Scripts/python.exe",
+      "args": ["C:/Users/i/Documents/Projects/QualysGPT/mcp_server/server.py"]
+    }
+  }
+}

@@ -5,4 +5,4 @@ data/memory.db
 __pycache__/
 *.pyc
 storage/
-.qdrant-initialized
+.qdrant-initialized*.mcpb
