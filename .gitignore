@@ -2,7 +2,10 @@ venv/
 .env
 data/raw/
 data/memory.db
+data/chainlit.db
 __pycache__/
 *.pyc
 storage/
-.qdrant-initialized*.mcpb
+.qdrant-initialized
+*.mcpb
+evals/private/
