@@ -123,5 +123,187 @@
     "cert_name": "VMDR",
     "url": "https://success.qualys.com/discussions/s/article/000006767",
     "description": "Article walking through how to log a feature request for new vulnerability detections in Qualys."
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/customersupport/s/cloud-agent-pam",
+    "description": "Qualys Cloud Agent Platform Availability Matrix: currently supported Cloud Agent versions, operating systems, and Qualys app modules; also referenced for the Agent versions that support On-Demand Scans.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.qualys.com/documentation/#cloud-agents",
+    "description": "Qualys documentation hub for Cloud Agents, including the latest Cloud Agent install guides.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.qualys.com/platform-identification/",
+    "description": "Qualys platform identification resource, including the most updated Cloud Agent Server and CDN URL list and how to identify your Qualys Platform.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.qualys.com/docs/qualys-cloud-agent-windows-install-guide.pdf",
+    "description": "Qualys Cloud Agent for Windows Installation Guide, covering installer components, MSI extraction, install commands, and AV/EDR/HIPS allow-listing.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/discussions/s/article/000007035",
+    "description": "Qualys support article with a detailed walkthrough for deploying Cloud Agent via Microsoft SCCM.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/discussions/s/article/000007153",
+    "description": "Qualys support article with a detailed walkthrough for deploying Cloud Agent via Microsoft Intune.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://learn.microsoft.com/en-us/mem/intune/apps/apps-win32-app-management",
+    "description": "Microsoft Intune documentation on Win32 app management, referenced for detailed Intune-based Cloud Agent deployment.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/9YPO",
+    "description": "IORAD interactive lab tutorial: Installing Cloud Agent (create Activation Key, add tag, select VM and SCA modules, install on Windows, verify process/log/Host ID/registration, view Asset Details Agent Summary).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.iorad.com/player/2387326/Proxy-Setup-for-Qualys-Cloud-Agent",
+    "description": "IORAD interactive lab tutorial: Proxy Setup for Qualys Cloud Agent (retrieve QGS appliance IP and proxy port, set proxy on Windows host with QualysProxy.exe, verify in registry, confirm host under QGS Connected IPs).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://blog.qualys.com/product-tech/2023/07/06/qualys-performance-tuning-series-qualys-cloud-agent-configuration-best-practice",
+    "description": "Qualys blog article in the Performance Tuning Series covering Cloud Agent Configuration Profile best practices, including CPU Limit and CPU Throttle tuning recommendations.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/a2ma",
+    "description": "IORAD interactive lab tutorial: Configuration Profile & Performance Settings (create a Configuration Profile via the wizard, assign Agents with Tags, verify scan settings, enable the PM app, enable Agent Scan Merge, set a reduced activity period, customize a low-performance setting, verify Configuration Profile order).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/9Y93",
+    "description": "IORAD interactive lab tutorial: Launch On-Demand Scan (edit the Windows registry to launch a VM On-Demand Scan, and initiate an On-Demand Scan from the Qualys Platform).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/customersupport/s/cloud-agent-pam#endsupport-2",
+    "description": "Cloud Agent Platform Availability Matrix, end-of-support section: identify EOL/EOS Agent versions when monitoring version distribution against the AVC dashboard.",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/customersupport/s/cloud-agent-pam#FeatureDependency",
+    "description": "Cloud Agent Platform Availability Matrix, Feature Dependency section: confirm which operating systems and Agent versions support the CAPS module.",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/a20J",
+    "description": "IORAD interactive lab tutorial: Cloud Agent Passive Sensor (verify the Data Upload Interval and set a domain in the CAPS Configuration, activate the CAPS module for an Agent, verify Unmanaged discoveries in the CSAM Inventory, confirm the Agent details that made the discovery).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/a2o5",
+    "description": "IORAD interactive lab tutorial: Activating & Configuring SwCA (run CSAM query to check for SwCA ideal candidates, activate the SwCA module, create custom Windows and Linux Scan Profiles, assign a SwCA profile manually, verify SwCA vulnerability findings in View Asset Details).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://qualys.sumtotal.host/Core/330.sumtfile",
+    "description": "Backup download link for the Agent-centric Unified Dashboards ZIP (Distribution and Last-24-hours dashboards) that can be imported into CSAM or VMDR for Cloud Agent health monitoring.",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://qualys.sharepoint.com/:f:/s/TrainingPublic/EnZXoqbDUl5AgzK_BFDMyHcBvuNCyHZFfghaNfz2L5miYA?e=ev7Jg6",
+    "description": "Backup SharePoint link to download the Cloud Agent-centric Unified Dashboards (Distribution and Last-24-hours) for import into CSAM or VMDR.",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.iorad.com/player/2376151/Monitoring-Agents-and-Asset-Details",
+    "description": "IORAD interactive lab tutorial: Monitoring Agents and Asset Details (view Asset Details including System Information and Agent Summary, explore the built-in Cloud Agent Dashboard, and use an imported Agent Monitoring Dashboard in CSAM with check-in and full-scan widgets and their underlying queries).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.qualys.com/docs/qualys-ca-api-user-guide.pdf",
+    "description": "Qualys Cloud Agent API User Guide, covering API operations including bulk Agent uninstall requests and supported filter operators (id, name, created, updated, tagName, agentUuid).",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://ior.ad/a0Sz",
+    "description": "IORAD interactive lab tutorial: Deactivate Modules and Uninstall Agents (deactivate PC on an Agent, use the bulk Actions drop-down to uninstall multiple Agents, create a Purge Rule in CSAM to purge and uninstall Agents that have not communicated with the Platform for 90 days).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://www.iorad.com/player/2386663/Deactivate-Modules-and-Uninstall-Agents",
+    "description": "IORAD interactive lab tutorial: Deactivate Modules and Uninstall Agents (deactivate the Policy Compliance module via Deactivate Agent, bulk-uninstall three selected Agents, and create a CSAM Asset Purge Rule with lastCheckedIn OLDER THAN 90 days that uninstalls returning agents and runs daily).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/customersupport/s/videolibrary?product=cloud-agent",
+    "description": "Qualys Support video library filtered to Cloud Agent, including the Agent troubleshooting video series referenced for resolving Agent issues.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://success.qualys.com/support/s/article/000007240",
+    "description": "Qualys support article on setting the PowerShell execution policy to RemoteSigned, a prerequisite for enabling Remote Log Collection for Qualys Support.",
+    "scrapable": null,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://forms.office.com/r/jwffWB9JTs",
+    "description": "Cloud Agent self-paced course self-assessment quiz (Microsoft Forms).",
+    "scrapable": false,
+    "checked_at": null
+  },
+  {
+    "cert_name": "CA",
+    "url": "https://qualys.com/free-trial",
+    "description": "Request page for a full-featured 30-day Qualys trial account.",
+    "scrapable": null,
+    "checked_at": null
   }
 ]

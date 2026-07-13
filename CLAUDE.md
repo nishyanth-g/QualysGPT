@@ -88,3 +88,12 @@
 ## Subagents (added Days 4-6)
 - routing-reviewer: reviews intent classification mistakes — invoke when wrong tool fires
 - eval-runner: runs test scripts and reports results — never modifies code
+
+
+## Pending — environment migration cleanup
+- Project moved to C:\Users\gonis\OneDrive\Documents\Projects\QualysGPT. MCP integration is BROKEN until fixed:
+  - Update absolute paths in .mcp.json (Claude Code) and mcp_server/manifest.json (venv python + server.py) to the new root
+  - Re-run `mcpb pack`, uninstall the old QualysGPT extension in Claude Desktop (Settings > Extensions), install the new .mcpb
+  - Verify: /mcp in Claude Code shows 4 tools; one qualys_search_notes call in Claude Desktop
+- OneDrive risk: exclude this folder from OneDrive sync (or move project out of OneDrive) — sync file-locking can corrupt data/memory.db, data/chainlit.db, and storage/ during live Chainlit/Qdrant sessions
+- If the folder was copied (not a fresh clone), recreate the venv: python -m venv venv + pip install -r requirements.txt (old venv has C:\Users\i\... baked in)
